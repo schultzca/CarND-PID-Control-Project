@@ -1,8 +1,13 @@
 #ifndef PID_H
 #define PID_H
 
+#include <vector>
+
 class PID {
 public:
+
+  bool first_step;
+
   /*
   * Errors
   */
@@ -13,9 +18,10 @@ public:
   /*
   * Coefficients
   */ 
-  double Kp;
-  double Ki;
-  double Kd;
+  std::vector<double> gains;
+  double prev_cte;
+
+  enum Gain {Kp, Ki, Kd};
 
   /*
   * Constructor
